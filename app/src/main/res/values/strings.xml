@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BeOnTime</string>
+    <string name="not_you_relogin"><u>Not You? Re-login</u></string>
+    <string name="employee_shift_operation">Shift Operation</string>
+    <string name="employee_start_stop_work">Work Operation</string>
+    <string name="about_project">About Project</string>
+</resources>

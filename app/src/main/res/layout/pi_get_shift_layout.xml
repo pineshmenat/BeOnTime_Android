@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainLayoutShiftAdapter"
+    android:orientation="vertical"
+    android:weightSum="4.03"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/shiftId"
+        android:layout_height="wrap_content"
+        android:text="500002"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_margin="5dp"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:layout_margin="3dp"
+        android:layout_weight="0.01"
+        />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/companyName"
+        android:layout_weight="1"
+        android:text="Walmart"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_margin="5dp"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/startTime"
+            android:text="20/11/17 09:00:00"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginRight="2.5dp"
+            android:layout_marginEnd="2.5dp"
+            android:layout_marginBottom="2.5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TO"
+            android:layout_margin="2.5dp"
+            android:gravity="center"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/endTime"
+            android:text="20/11/18 09:00:00"
+
+            android:layout_margin="2.5dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#8000"
+        android:layout_margin="1dp"
+        />
+</LinearLayout>
