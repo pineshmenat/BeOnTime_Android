@@ -63,6 +63,15 @@ public class PI_RequestGetShifts extends StringRequest {
 
     }
 
+    public PI_RequestGetShifts(String shiftID, String status, Response.Listener<String> listener) {
+        super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
+
+        params = new HashMap<>();
+        params.put("operation", "changeStatus");
+        params.put("shiftId", shiftID);
+        params.put("status", status);
+
+    }
 
 
     @Override
