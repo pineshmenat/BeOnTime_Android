@@ -145,6 +145,7 @@ public class ZF_ActivityEmployeeStartWork extends AppCompatActivity {
 
                     geoLocationIntent.putExtra("latWorkingPlace", latWorkingPlace);
                     geoLocationIntent.putExtra("lngWorkingPlace", lngWorkingPlace);
+                    geoLocationIntent.putExtra("shiftId", shiftId);
 
                     ZF_ActivityEmployeeStartWork.this.startActivityForResult(geoLocationIntent, ZF_ActivityEmployeeStartWork.reqCode);
 
@@ -153,6 +154,7 @@ public class ZF_ActivityEmployeeStartWork extends AppCompatActivity {
 
                     geoLocationIntent.putExtra("latWorkingPlace", latWorkingPlace);
                     geoLocationIntent.putExtra("lngWorkingPlace", lngWorkingPlace);
+                    geoLocationIntent.putExtra("shiftId", shiftId);
 
                     ZF_ActivityEmployeeStartWork.this.startActivityForResult(geoLocationIntent, ZF_ActivityEmployeeStartWork.reqCode);
 

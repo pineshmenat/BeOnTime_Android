@@ -29,6 +29,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -47,6 +50,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -60,6 +66,7 @@ public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements
     Circle workingMovementRange;
     double latWorkingPlace, lngWorkingPlace;
     double latUserPosition, lngUserPosition;
+    String shiftId;
 
     final float zoom = 16;      // Google map zoom
     final int gpsUpdateInterval = 2500;  // unit is millisecond
@@ -85,7 +92,9 @@ public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements
         // START -- Receive intent information
         latWorkingPlace = getIntent().getDoubleExtra("latWorkingPlace", -1);
         lngWorkingPlace = getIntent().getDoubleExtra("lngWorkingPlace", -1);
+        shiftId = getIntent().getStringExtra("shiftId");
 //        Log.w("zf_error", "latWorkingPlace: " + latWorkingPlace + " lngWorkingPlace: " + lngWorkingPlace);
+        Log.w("zf_error", "shiftId in ZF_ActivityEmployeeGeoLocation onCreate(): " + shiftId);
         // END -- Receive intent information
 
 
@@ -387,10 +396,13 @@ public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements
 
             mGoogleMap.animateCamera(update);
 
+            this.livePositionUpdate(latUserPosition, lngUserPosition);
 
+            // Clear marker when user's location changes everytime
             if (workingPlaceMarker != null) {
                 workingPlaceMarker.remove();
             }
+            // Add new marker
             MarkerOptions options = new MarkerOptions().title("Your position").position(ll);
             workingPlaceMarker = mGoogleMap.addMarker(options);
 
@@ -449,5 +461,25 @@ public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements
         return sb;
     }
 
+    private void livePositionUpdate(double latUserPosition, double lngUserPosition) {
 
+        // Use volley to communicate with php web server
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    Log.i("zf_error", "success in livePositionUpdate()" + Boolean.toString(success));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        ZF_RequestLivePositionUpdate livePositionUpdateRequestZF = new ZF_RequestLivePositionUpdate(shiftId, Double.toString(latUserPosition), Double.toString(lngUserPosition), responseListener);
+        RequestQueue queue = Volley.newRequestQueue(ZF_ActivityEmployeeGeoLocation.this);
+        queue.add(livePositionUpdateRequestZF);
+    }
 }

@@ -79,6 +79,7 @@ public class ZF_ActivityLogin extends AppCompatActivity {
 
                                 editor.putString("USER_ID",userId);
                                 editor.apply();
+
 //                                Log.w("zf_error", roleId + "");
 
                                 switch (Integer.parseInt(roleId)) {
@@ -100,7 +101,6 @@ public class ZF_ActivityLogin extends AppCompatActivity {
                                         intent.putExtra("firstName", firstName);
                                         intent.putExtra("lastName", lastName);
                                         intent.putExtra("userId", userId);
-
                                         intent.putExtra("roleId", roleId);
 
                                         ZF_ActivityLogin.this.startActivity(intent);

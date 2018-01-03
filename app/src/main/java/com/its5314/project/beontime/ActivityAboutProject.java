@@ -19,7 +19,7 @@ public class ActivityAboutProject extends AppCompatActivity {
         // START -- Toolbar section
         Toolbar beontimeToolbar = (Toolbar) findViewById(R.id.beontimeToolbar);
         setSupportActionBar(beontimeToolbar);
-        getSupportActionBar().setTitle(" BeOnTime (Employee)");
+        getSupportActionBar().setTitle(" BeOnTime");
         beontimeToolbar.setLogo(R.drawable.beontime_logo_32x32);
         beontimeToolbar.setTitleTextColor(Color.WHITE);
         // END -- Toolbar section
