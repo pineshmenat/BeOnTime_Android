@@ -7,7 +7,7 @@ package com.its5314.project.beontime.adapter;
 public class PI_POJO_GetShifts {
 
 
-    private String shiftId,companyName,shiftStartTime,shiftEndTime;
+    private String shiftId,companyName,shiftStartTime,shiftEndTime,userName,jobTitle;
 
     public String getShiftId() {
         return shiftId;
@@ -39,5 +39,21 @@ public class PI_POJO_GetShifts {
 
     public void setShiftEndTime(String shiftEndTime) {
         this.shiftEndTime = shiftEndTime;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 }
