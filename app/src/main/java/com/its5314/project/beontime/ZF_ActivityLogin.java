@@ -63,6 +63,7 @@ public class ZF_ActivityLogin extends AppCompatActivity {
 
                 // Use volley to communicate with php web server
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
 
@@ -76,8 +77,12 @@ public class ZF_ActivityLogin extends AppCompatActivity {
                                 String lastName = jsonResponse.getString("lastName");
                                 String userId = jsonResponse.getString("userId");
                                 String roleId = jsonResponse.getString("roleId");
+                                String companyId = jsonResponse.getString("CompanyId");
+//                                Log.w("zf_error", roleId + "");
 
                                 editor.putString("USER_ID",userId);
+                                editor.putString("ROLE_ID",jsonResponse.getString("roleId"));
+                                editor.putString("COMPANY_ID",jsonResponse.getString("CompanyId"));
                                 editor.apply();
 
 //                                Log.w("zf_error", roleId + "");
@@ -91,6 +96,15 @@ public class ZF_ActivityLogin extends AppCompatActivity {
                                     // 11 means client role
                                     case 11: {
 
+                                        Intent intent = new Intent(ZF_ActivityLogin.this, ZF_ActivityEmployeeStartWork.class);
+                                        intent.putExtra("firstName", firstName);
+                                        intent.putExtra("lastName", lastName);
+                                        intent.putExtra("userId", userId);
+                                        intent.putExtra("roleId", roleId);
+                                        intent.putExtra("companyId",companyId);
+                                        ZF_ActivityLogin.this.startActivity(intent);
+                                        finish();
+
                                         break;
                                     }
                                     // 12 means employee role
@@ -102,8 +116,9 @@ public class ZF_ActivityLogin extends AppCompatActivity {
                                         intent.putExtra("lastName", lastName);
                                         intent.putExtra("userId", userId);
                                         intent.putExtra("roleId", roleId);
-
+                                        intent.putExtra("companyId",companyId);
                                         ZF_ActivityLogin.this.startActivity(intent);
+                                        finish();
 
                                         break;
                                     }

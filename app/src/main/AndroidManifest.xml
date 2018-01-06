@@ -28,24 +28,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ZF_ActivityLogin">
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            -->
 
         </activity>
         <activity android:name=".ZF_ActivityEmployeeStartWork"></activity>
         <activity android:name=".ZF_ActivityEmployeeGeoLocation"></activity>
         <activity android:name=".PI_ActivityEmployeeShiftOperation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter> -->
+
         </activity>
 
         <meta-data

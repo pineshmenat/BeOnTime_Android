@@ -2,6 +2,7 @@ package com.its5314.project.beontime;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,9 @@ public class PI_ActivityEmployeeShiftOperation extends AppCompatActivity {
     private Button mStartDate,mEndDate,mSubmit;
     private String startDate="1972-1-1",endDate="2019-1-1";
 
+    private SharedPreferences sharedPreferences;
+    private String roleId;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,8 @@ public class PI_ActivityEmployeeShiftOperation extends AppCompatActivity {
         mEndDate=(Button) findViewById(R.id.endDate);
         mSubmit=(Button) findViewById(R.id.submit);
 
+        sharedPreferences=getSharedPreferences("BE_ON_TIME",MODE_PRIVATE);
+        roleId=sharedPreferences.getString("ROLE_ID","");
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +109,14 @@ public class PI_ActivityEmployeeShiftOperation extends AppCompatActivity {
         // START -- Toolbar section
         Toolbar beontimeToolbar = (Toolbar) findViewById(R.id.beontimeToolbar);
         setSupportActionBar(beontimeToolbar);
-        getSupportActionBar().setTitle(" BeOnTime (Employee)");
+
+        if(roleId.equalsIgnoreCase("11")){
+            getSupportActionBar().setTitle(" BeOnTime (Client)");
+        }
+        else if(roleId.equalsIgnoreCase("12")){
+            getSupportActionBar().setTitle(" BeOnTime (Employee)");
+        }
+
         beontimeToolbar.setLogo(R.drawable.beontime_logo_32x32);
         beontimeToolbar.setTitleTextColor(Color.WHITE);
         // END -- Toolbar section
@@ -113,7 +126,6 @@ public class PI_ActivityEmployeeShiftOperation extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
         getShiftsFromDb();
 
     }
@@ -121,7 +133,7 @@ public class PI_ActivityEmployeeShiftOperation extends AppCompatActivity {
     private void getShiftsFromDb() {
 
         Log.d("StartDate",startDate+","+endDate);
-        PI_RequestGetShifts zf_requestGetShifts = new PI_RequestGetShifts(this, startDate, endDate, new Response.Listener<String>() {
+        PI_RequestGetShifts zf_requestGetShifts = new PI_RequestGetShifts(this, startDate, endDate,roleId, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -144,6 +156,11 @@ public class PI_ActivityEmployeeShiftOperation extends AppCompatActivity {
                             pi_pojo_getShifts.setCompanyName(object.getString("CompanyName"));
                             pi_pojo_getShifts.setShiftStartTime(object.getString("ShiftStartTime"));
                             pi_pojo_getShifts.setShiftEndTime(object.getString("ShiftEndTime"));
+
+                            if(sharedPreferences.getString("ROLE_ID","").equalsIgnoreCase("11")){
+                                pi_pojo_getShifts.setUserName(object.getString("FirstName")+" "+object.getString("LastName"));
+                                pi_pojo_getShifts.setJobTitle(object.getString("empDesignationName"));
+                            }
 
                             shifts.add(pi_pojo_getShifts);
 

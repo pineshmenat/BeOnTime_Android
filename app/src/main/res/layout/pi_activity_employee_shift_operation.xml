@@ -6,24 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="1"
     tools:context="com.its5314.project.beontime.PI_ActivityEmployeeShiftOperation">
 
     <include
         android:id="@+id/beontimeToolbar"
         layout="@layout/zf_action_bar"
+
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.1"
+        android:layout_margin="5dp"
+        >
     <Button
         android:layout_width="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_margin="5dp"
         android:layout_height="wrap_content"
         android:id="@+id/startDate"
         android:text="Start Date"
+        android:padding="5dp"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/endDate"
+        android:background="@color/colorPrimary"
+        android:layout_margin="5dp"
         android:text="End Date"
         />
 
@@ -31,13 +45,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/submit"
+        android:background="@color/colorPrimary"
+        android:layout_margin="5dp"
         android:text="Submit"
         />
-
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvShifts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.8"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="64dp" />
 

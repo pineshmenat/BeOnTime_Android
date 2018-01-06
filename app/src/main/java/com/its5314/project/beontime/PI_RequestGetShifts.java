@@ -2,6 +2,7 @@ package com.its5314.project.beontime;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
@@ -41,17 +42,26 @@ public class PI_RequestGetShifts extends StringRequest {
         //params.put("password", password);
     }
 
-    public PI_RequestGetShifts(Context context, String startTime, String endTime, Response.Listener<String> listener) {
+    public PI_RequestGetShifts(Context context, String startTime, String endTime, String roleId, Response.Listener<String> listener) {
         super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
 
 
         sharedPreferences = context.getSharedPreferences("BE_ON_TIME",Context.MODE_PRIVATE);
 
-        params = new HashMap<>();
-        params.put("operation", "filterShifts");
-        params.put("userId", sharedPreferences.getString("USER_ID",""));
-        params.put("startDate", startTime);
-        params.put("endDate", endTime);
+        if(roleId.equalsIgnoreCase("12")) {
+            params = new HashMap<>();
+            params.put("operation", "filterShifts");
+            params.put("userId", sharedPreferences.getString("USER_ID", ""));
+            params.put("startDate", startTime);
+            params.put("endDate", endTime);
+        }
+        else {
+            params = new HashMap<>();
+            params.put("operation", "getClientShifts");
+            params.put("companyId", "1001");//sharedPreferences.getString("COMPANY_ID", ""));
+            params.put("startDate", startTime);
+            params.put("endDate", endTime);
+        }
     }
 
     public PI_RequestGetShifts(String shiftID, Response.Listener<String> listener) {
@@ -63,6 +73,16 @@ public class PI_RequestGetShifts extends StringRequest {
 
     }
 
+    public PI_RequestGetShifts(String shiftID, int companyId, Response.Listener<String> listener) {
+        super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
+
+        Log.d("RESPONSE",shiftID+" , "+companyId);
+        params = new HashMap<>();
+        params.put("operation", "getClientShiftDetails");
+        params.put("shiftId", shiftID);
+        params.put("companyId", String.valueOf(companyId));
+    }
+
     public PI_RequestGetShifts(String shiftID, String status, Response.Listener<String> listener) {
         super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
 
@@ -70,6 +90,17 @@ public class PI_RequestGetShifts extends StringRequest {
         params.put("operation", "changeStatus");
         params.put("shiftId", shiftID);
         params.put("status", status);
+
+    }
+
+    public PI_RequestGetShifts(String shiftID, String rating,String review, Response.Listener<String> listener) {
+        super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
+
+        params = new HashMap<>();
+        params.put("operation", "updateRatingAndReview");
+        params.put("shiftId", shiftID);
+        params.put("StarRating", rating);
+        params.put("ClientReview", review);
 
     }
 
