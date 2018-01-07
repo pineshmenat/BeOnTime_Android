@@ -53,6 +53,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Created by Zhongjie FAN on 2017-12-02.
+ */
+
 public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 

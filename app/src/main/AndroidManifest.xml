@@ -55,6 +55,10 @@
 
         <activity android:name=".ActivityAboutProject"></activity>
         <activity android:name=".PI_ShiftDetails"></activity>
+
+        <activity android:name=".DSP_ActivityEmployeePosition" />
+        <activity android:name=".DSP_ViewManagerProfile" />
+        <activity android:name=".DSP_ViewEmployeeList"></activity>
     </application>
 
 </manifest>

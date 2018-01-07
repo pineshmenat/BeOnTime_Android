@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/colorGrayLight"
+        app:cardCornerRadius="6dp"
+        app:contentPadding="6dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/employeeIdTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/empIdTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="69dp"
+            android:text="hello"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/employeeIdTV" />
+
+        <TextView
+            android:id="@+id/employeeNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/employeeIdTV" />
+
+        <TextView
+            android:id="@+id/empNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text="hello"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/employeeNameTV"
+            app:layout_constraintTop_toBottomOf="@id/empIdTV" />
+
+        <TextView
+            android:id="@+id/employeeEmailTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/employeeNameTV" />
+
+        <TextView
+            android:id="@+id/empEmailTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:text="hello"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/employeeEmailTV"
+            app:layout_constraintTop_toBottomOf="@id/empNameTV" />
+
+        <TextView
+            android:id="@+id/employeeAddressTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Address:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/employeeEmailTV" />
+
+        <TextView
+            android:id="@+id/empAddressTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:text="hello"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/employeeAddressTV"
+            app:layout_constraintTop_toBottomOf="@id/empEmailTV" />
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

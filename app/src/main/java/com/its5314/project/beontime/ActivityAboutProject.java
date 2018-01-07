@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+/**
+ * Created by Zhongjie FAN on 2017-12-11.
+ */
+
 public class ActivityAboutProject extends AppCompatActivity {
 
     TextView tvAboutProject;

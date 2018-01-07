@@ -19,6 +19,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Created by Zhongjie FAN on 2017-12-13.
+ */
+
 public class ZF_ActivityLogin extends AppCompatActivity {
 
     EditText etUsername;
@@ -91,6 +95,13 @@ public class ZF_ActivityLogin extends AppCompatActivity {
                                     // 10 means manager role
                                     case 10: {
 
+                                        Intent intent = new Intent(ZF_ActivityLogin.this,DSP_ActivityEmployeePosition.class);
+                                        intent.putExtra("firstName",firstName);
+                                        intent.putExtra("lastName", lastName);
+                                        intent.putExtra("userId", userId);
+                                        intent.putExtra("roleId", roleId);
+                                        intent.putExtra("companyId",companyId);
+                                        ZF_ActivityLogin.this.startActivity(intent);
                                         break;
                                     }
                                     // 11 means client role

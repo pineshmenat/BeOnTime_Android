@@ -23,7 +23,7 @@ public class PI_RequestGetShifts extends StringRequest {
     // NOTES:
     // Below cookie string is only effective for 1 day
     // To get new cookie code, please visit http://beontime.byethost16.com/android_project/getcookie.php from web browser
-    public static final String BYETHOST_COOKIE_FOR_SECURITY = "3cd8d1e6ca7e6c6f76ad8f003f13c604"; // For Emulator
+    public static final String BYETHOST_COOKIE_FOR_SECURITY = "0f908067562d857a4bd94b6ee1997ffe"; // For Emulator
     //public static final String BYETHOST_COOKIE_FOR_SECURITY = "2136669357b0b82d9a3f516cb2b130d9"; // For Samsung Galaxy
 
     private Map<String, String> params;
