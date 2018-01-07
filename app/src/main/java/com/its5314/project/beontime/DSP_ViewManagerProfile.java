@@ -1,5 +1,6 @@
 package com.its5314.project.beontime;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -25,6 +27,8 @@ public class DSP_ViewManagerProfile extends AppCompatActivity {
     private TextView tvCompanyAddress;
     private String companyId;
     private TextView websiteTV;
+
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,26 @@ public class DSP_ViewManagerProfile extends AppCompatActivity {
         // Inflate menu xml file to this activity
         menuInflater.inflate(R.menu.dsp_menu_in_activity_employee_position, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.viewProfile:
+                intent = new Intent(DSP_ViewManagerProfile.this, DSP_ViewManagerProfile.class);
+                intent.putExtra("companyId", companyId);
+                DSP_ViewManagerProfile.this.startActivity(intent);
+                break;
+            case R.id.LogOut:
+                intent = new Intent(DSP_ViewManagerProfile.this, ZF_ActivityLogin.class);
+                DSP_ViewManagerProfile.this.startActivity(intent);
+                break;
+            case R.id.aboutProject:
+                intent = new Intent(this, ActivityAboutProject.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
