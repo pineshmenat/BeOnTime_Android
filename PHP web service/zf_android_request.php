@@ -690,7 +690,7 @@ function livePositionUpdate($dbConnection, $shiftId, $currentLat, $currentLng) {
     $response = [];
     $response['success'] = false;
 
-    $SQL = "UPDATE shiftmaster SET WorkplaceLat=:currentLat, WorkplaceLong=:currentLng WHERE ShiftId=:shiftId";
+    $SQL = "UPDATE shiftmaster SET CurrentLat=:currentLat, CurrentLong=:currentLng WHERE ShiftId=:shiftId";
     $pdpstm = $dbConnection->prepare($SQL);
     $pdpstm->bindValue(':currentLat', $currentLat, PDO::PARAM_STR);
     $pdpstm->bindValue(':currentLng', $currentLng, PDO::PARAM_STR);
