@@ -51,7 +51,7 @@ public class DSP_ViewManagerProfile extends AppCompatActivity {
         companyId = getIntent().getStringExtra("companyId");
         websiteTV = findViewById(R.id.websiteTV);
         websiteTV.setMovementMethod(LinkMovementMethod.getInstance());
-        websiteTV.setText(Html.fromHtml("<a href='http://beontime.byethost16.com'>http://beontime.byethost16.com</a>"));
+        websiteTV.setText(Html.fromHtml("<a href='http://beontime.byethost16.com/beontime/html_php/index.html'>BeOnTime</a>"));
         populateProfileInfo();
     }
 

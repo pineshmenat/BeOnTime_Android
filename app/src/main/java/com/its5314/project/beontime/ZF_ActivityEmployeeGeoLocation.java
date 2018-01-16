@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -71,6 +72,8 @@ public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements
     double latWorkingPlace, lngWorkingPlace;
     double latUserPosition, lngUserPosition;
     String shiftId;
+    String roleId;
+    private SharedPreferences sharedPreferences;
 
     final float zoom = 16;      // Google map zoom
     final int gpsUpdateInterval = 2500;  // unit is millisecond
@@ -81,10 +84,22 @@ public class ZF_ActivityEmployeeGeoLocation extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zf_activity_employee_geo_location);
 
+        sharedPreferences = getSharedPreferences("BE_ON_TIME",MODE_PRIVATE);
+        roleId = sharedPreferences.getString("ROLE_ID","");
+
         // START -- Toolbar section
         Toolbar beontimeToolbar = (Toolbar) findViewById(R.id.beontimeToolbar);
         setSupportActionBar(beontimeToolbar);
-        getSupportActionBar().setTitle(" BeOnTime (Employee)");
+
+        if(roleId.equalsIgnoreCase("11")){
+            getSupportActionBar().setTitle(" BeOnTime (Client)");
+        }
+        else if(roleId.equalsIgnoreCase("12")){
+            getSupportActionBar().setTitle(" BeOnTime (Employee)");
+        } else {
+            getSupportActionBar().setTitle(" BeOnTime (Manager)");
+        }
+
         beontimeToolbar.setLogo(R.drawable.beontime_logo_32x32);
         beontimeToolbar.setTitleTextColor(Color.WHITE);
         // END -- Toolbar section

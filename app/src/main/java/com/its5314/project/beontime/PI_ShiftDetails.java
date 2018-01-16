@@ -1,8 +1,10 @@
 package com.its5314.project.beontime;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +41,29 @@ public class PI_ShiftDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pi__shift_details);
+
+        sharedPreferences = getSharedPreferences("BE_ON_TIME",MODE_PRIVATE);
+        shiftId = getIntent().getStringExtra("shiftId");
+
+        companyId = sharedPreferences.getString("COMPANY_ID","");
+        roleId = sharedPreferences.getString("ROLE_ID","");
+
+        // START -- Toolbar section
+        Toolbar beontimeToolbar = (Toolbar) findViewById(R.id.beontimeToolbar);
+        setSupportActionBar(beontimeToolbar);
+
+        if(roleId.equalsIgnoreCase("11")){
+            getSupportActionBar().setTitle(" BeOnTime (Client)");
+        }
+        else if(roleId.equalsIgnoreCase("12")){
+            getSupportActionBar().setTitle(" BeOnTime (Employee)");
+        } else {
+            getSupportActionBar().setTitle(" BeOnTime (Manager)");
+        }
+
+        beontimeToolbar.setLogo(R.drawable.beontime_logo_32x32);
+        beontimeToolbar.setTitleTextColor(Color.WHITE);
+        // END -- Toolbar section
 
         mCompanyName=(TextView) findViewById(R.id.shiftCompanyValue);
         mWorkLocation=(TextView) findViewById(R.id.shiftWorkLocationValue);
@@ -90,11 +115,7 @@ public class PI_ShiftDetails extends AppCompatActivity {
             }
         });
 
-        sharedPreferences = getSharedPreferences("BE_ON_TIME",MODE_PRIVATE);
-        shiftId = getIntent().getStringExtra("shiftId");
 
-        companyId = sharedPreferences.getString("COMPANY_ID","");
-        roleId = sharedPreferences.getString("ROLE_ID","");
 
         if(roleId.equalsIgnoreCase("11")){
             getInfoFromDb(shiftId, companyId);

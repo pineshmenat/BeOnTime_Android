@@ -1,6 +1,7 @@
 package com.its5314.project.beontime;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class ZF_ActivityEmployeeStartWork extends AppCompatActivity {
     String workingPlace;
     String shiftStartTime;
     String shiftEndTime;
+    String roleId;
+    private SharedPreferences sharedPreferences;
     TextView tvNotYouRelogin;
     TextView tvWelcomeMsg;
     TextView tvUserId;
@@ -67,11 +70,22 @@ public class ZF_ActivityEmployeeStartWork extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zf_activity_employee_start_work);
 
+        sharedPreferences = getSharedPreferences("BE_ON_TIME",MODE_PRIVATE);
+        roleId = sharedPreferences.getString("ROLE_ID","");
 
         // START -- Toolbar section
         Toolbar beontimeToolbar = (Toolbar) findViewById(R.id.beontimeToolbar);
         setSupportActionBar(beontimeToolbar);
-        getSupportActionBar().setTitle(" BeOnTime (Employee)");
+
+        if(roleId.equalsIgnoreCase("11")){
+            getSupportActionBar().setTitle(" BeOnTime (Client)");
+        }
+        else if(roleId.equalsIgnoreCase("12")){
+            getSupportActionBar().setTitle(" BeOnTime (Employee)");
+        } else {
+            getSupportActionBar().setTitle(" BeOnTime (Manager)");
+        }
+
         beontimeToolbar.setLogo(R.drawable.beontime_logo_32x32);
         beontimeToolbar.setTitleTextColor(Color.WHITE);
         // END -- Toolbar section
