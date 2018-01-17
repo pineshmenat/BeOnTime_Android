@@ -79,6 +79,10 @@ public class ZF_ActivityEmployeeStartWork extends AppCompatActivity {
 
         if(roleId.equalsIgnoreCase("11")){
             getSupportActionBar().setTitle(" BeOnTime (Client)");
+            Intent intent = new Intent(this, PI_ActivityEmployeeShiftOperation.class);
+            startActivity(intent);
+            finish();
+
         }
         else if(roleId.equalsIgnoreCase("12")){
             getSupportActionBar().setTitle(" BeOnTime (Employee)");
