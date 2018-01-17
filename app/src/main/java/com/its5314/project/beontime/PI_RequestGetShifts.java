@@ -23,14 +23,14 @@ public class PI_RequestGetShifts extends StringRequest {
     // NOTES:
     // Below cookie string is only effective for 1 day
     // To get new cookie code, please visit http://beontime.byethost16.com/android_project/getcookie.php from web browser
-    public static final String BYETHOST_COOKIE_FOR_SECURITY = "36dbf1592d6e1d76e292529e8d0ad09a"; // For Emulator
+    public static final String BYETHOST_COOKIE_FOR_SECURITY = "3cd8d1e6ca7e6c6f76ad8f003f13c604"; // For Emulator
     //public static final String BYETHOST_COOKIE_FOR_SECURITY = "2136669357b0b82d9a3f516cb2b130d9"; // For Samsung Galaxy
 
     private Map<String, String> params;
 
     private SharedPreferences sharedPreferences;
 
-    public PI_RequestGetShifts(Context context, Response.Listener<String> listener) {
+    /*public PI_RequestGetShifts(Context context, Response.Listener<String> listener) {
         super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
 
 
@@ -40,7 +40,7 @@ public class PI_RequestGetShifts extends StringRequest {
         params.put("operation", "getShifts");
         params.put("userId", sharedPreferences.getString("USER_ID",""));
         //params.put("password", password);
-    }
+    }*/
 
     public PI_RequestGetShifts(Context context, String startTime, String endTime, String roleId, Response.Listener<String> listener) {
         super(Method.POST, PI_RequestGetShifts.HTTP_REQUEST_URL, listener, null);
@@ -58,7 +58,7 @@ public class PI_RequestGetShifts extends StringRequest {
         else {
             params = new HashMap<>();
             params.put("operation", "getClientShifts");
-            params.put("companyId", "1001");//sharedPreferences.getString("COMPANY_ID", ""));
+            params.put("companyId", sharedPreferences.getString("COMPANY_ID", ""));
             params.put("startDate", startTime);
             params.put("endDate", endTime);
         }
