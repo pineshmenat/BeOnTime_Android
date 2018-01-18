@@ -20,7 +20,7 @@ public class ZF_RequestLogin extends StringRequest {
     // NOTES:
     // Below cookie string is only effective for 1 day
     // To get new cookie code, please visit http://beontime.byethost16.com/android_project/getcookie.php from web browser
-   public static final String BYETHOST_COOKIE_FOR_SECURITY = "36dbf1592d6e1d76e292529e8d0ad09a"; // For Emulator
+   public static final String BYETHOST_COOKIE_FOR_SECURITY = "73ee38a56ee4f96fe90bf8e9d3e34b94"; // For Emulator
 //    public static final String BYETHOST_COOKIE_FOR_SECURITY = "24a0eaef28ccd808e4353cabdb6215fe"; // For Samsung Galaxy
 
     private Map<String, String> params;

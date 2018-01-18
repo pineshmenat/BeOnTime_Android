@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BeOnTime.iml" filepath="$PROJECT_DIR$/BeOnTime.iml" />
+      <module fileurl="file://C:\humber\Info-Tech-Soln-S\Sem-3\MobileApplication\project\BeOnTime_Android\BeOnTime.iml" filepath="C:\humber\Info-Tech-Soln-S\Sem-3\MobileApplication\project\BeOnTime_Android\BeOnTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BeOnTime_Android.iml" filepath="$PROJECT_DIR$/BeOnTime_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\humber\Info-Tech-Soln-S\Sem-3\MobileApplication\project\BeOnTime_Android\app\app.iml" filepath="C:\humber\Info-Tech-Soln-S\Sem-3\MobileApplication\project\BeOnTime_Android\app\app.iml" />
     </modules>
   </component>
 </project>

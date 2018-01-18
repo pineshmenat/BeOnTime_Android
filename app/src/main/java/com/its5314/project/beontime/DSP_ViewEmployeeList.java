@@ -1,5 +1,6 @@
 package com.its5314.project.beontime;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class DSP_ViewEmployeeList extends AppCompatActivity {
 
     private String companyId;
     private Intent intent;
+    private Context context;
 
     RecyclerView rv;
    // RecyclerView.Adapter adapter;
@@ -37,7 +39,7 @@ public class DSP_ViewEmployeeList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dsp_activity_view_employee_list);
-
+context = this;
         // START -- Toolbar section
         Toolbar beontimeToolbar = (Toolbar) findViewById(R.id.beontimeToolbar);
         setSupportActionBar(beontimeToolbar);
@@ -88,7 +90,7 @@ public class DSP_ViewEmployeeList extends AppCompatActivity {
                         employeeEngine = new EmployeeEngine(emp);
                         /*rv = (RecyclerView) findViewById(R.id.rv);
                         rv.setLayoutManager(new LinearLayoutManager(DSP_ViewEmployeeList.this));*/
-                        RecyclerView.Adapter adapter = new EmployeeAdapter(employeeEngine);
+                        RecyclerView.Adapter adapter = new EmployeeAdapter(context,employeeEngine);
                         rv.setAdapter(adapter);
                     }
                 } catch (JSONException e) {
